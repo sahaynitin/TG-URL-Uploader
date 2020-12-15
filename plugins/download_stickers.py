@@ -91,5 +91,3 @@ async def DownloadStickersBot(bot, update):
             Translation.UPLOAD_START, a.message_id, update.chat.id, c_time
         )
     )
-    os.remove(the_real_download_location)
-    await a.delete()
