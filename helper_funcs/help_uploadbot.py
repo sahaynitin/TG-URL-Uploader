@@ -2,13 +2,14 @@
 # -*- coding: utf-8 -*-
 # (c) Shrimadhav U K
 
+# the logging things
+import logging
+logging.basicConfig(level=logging.DEBUG,
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
 import os
 import requests
-import time
-from helper_funcs.display_progress import (
-    humanbytes
-)
-
 
 def DetectFileSize(url):
     r = requests.get(url, allow_redirects=True, stream=True)
@@ -16,15 +17,7 @@ def DetectFileSize(url):
     return total_size
 
 
-def DownLoadFile(
-    url,
-    file_name,
-    chunk_size,
-    client,
-    ud_type,
-    message_id,
-    chat_id
-):
+def DownLoadFile(url, file_name, chunk_size, client, ud_type, message_id, chat_id):
     if os.path.exists(file_name):
         os.remove(file_name)
     if not url:
