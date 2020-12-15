@@ -67,28 +67,30 @@ async def DownloadStickersBot(bot, update):
         message_id=a.message_id
     )
     c_time = time.time()
-    await bot.send_document(
-        chat_id=update.chat.id,
+    await a.reply_document(
         document=the_real_download_location,
         # thumb=thumb_image_path,
         # caption=description,
         # reply_markup=reply_markup,
-        reply_to_message_id=a.message_id,
+        # reply_to_message_id=a.message_id,
         progress=progress_for_pyrogram,
         progress_args=(
-            Translation.UPLOAD_START, a.message_id, update.chat.id, c_time
+            Translation.UPLOAD_START,
+            a,
+            c_time
         )
     )
-    await bot.send_photo(
-        chat_id=update.chat.id,
+    await a.reply_photo(
         photo=the_real_download_location,
         # thumb=thumb_image_path,
         # caption=description,
         # reply_markup=reply_markup,
-        reply_to_message_id=a.message_id,
+        # reply_to_message_id=a.message_id,
         progress=progress_for_pyrogram,
         progress_args=(
-            Translation.UPLOAD_START, a.message_id, update.chat.id, c_time
+            Translation.UPLOAD_START,
+            a,
+            c_time
         )
     )
     os.remove(the_real_download_location)
