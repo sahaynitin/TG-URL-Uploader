@@ -1,4 +1,3 @@
-  
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 # (c) Shrimadhav U K
@@ -11,7 +10,6 @@ logger = logging.getLogger(__name__)
 
 import os
 import time
-from PIL import Image
 
 # the secret configuration specific things
 if bool(os.environ.get("WEBHOOK", False)):
@@ -29,7 +27,7 @@ from helper_funcs.chat_base import TRChatBase
 from helper_funcs.display_progress import progress_for_pyrogram
 
 
-@Client.on_message(Filters.sticker)
+@pyrogram.Client.on_message(pyrogram.Filters.sticker)
 async def DownloadStickersBot(bot, update):
     if update.from_user.id not in AUTH_USERS:
         await update.delete()
